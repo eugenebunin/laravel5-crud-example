@@ -47,21 +47,22 @@
 					<div class="panel-body">
 						<table class="table table-striped task-table">
 							<thead>
-								<th>Page</th>
+								<th>Name</th>
+								<th>Slug</th>
 								<th>&nbsp;</th>
 							</thead>
 							<tbody>
 								@foreach ($pages as $page)
 									<tr>
 										<td class="table-text"><div>{{ $page->name }}</div></td>
-
+										<td class="table-text"><div>{{ $page->slug }}</div></td>
 										<!-- Page Delete Button -->
 										<td>
 											<form action="/pages/{{ $page->id }}" method="POST">
 												{{ csrf_field() }}
 												{{ method_field('DELETE') }}
 
-												<button type="submit" id="delete-page-{{ $age->id }}" class="btn btn-danger">
+												<button type="submit" id="delete-page-{{ $page->id }}" class="btn btn-danger">
 													<i class="fa fa-btn fa-trash"></i>Delete
 												</button>
 											</form>
