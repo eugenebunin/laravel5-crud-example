@@ -9,7 +9,8 @@ class PageController extends Controller
 {
     public function index()
     {
-
+        $pages = [];
+        return view('page.index', ['pages' => $pages]);
     }
 
     public function delete()
@@ -18,6 +19,11 @@ class PageController extends Controller
     }
 
     public function save()
+    {
+
+    }
+
+    public function edit()
     {
 
     }
