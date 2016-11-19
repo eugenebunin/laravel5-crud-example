@@ -22,8 +22,8 @@ Route::get('/info', function () {
 });
 
 Route::group(['middleware' => ['web']], function () {
-    Route::post('/posts', 'Site\PostController@create');
-    Route::post('/posts/delete/{id}', 'Site\PostController@delete');
-    Route::get('/posts', 'Site\PostController@index');
-    Route::get('/posts/view/{id}', 'Site\PostController@view');
+    Route::post('/pages', 'Site\PageController@create');
+    Route::post('/pages/delete/{id}', 'Site\PageController@delete');
+    Route::get('/pages', 'Site\PageController@index');
+    Route::get('/pages/show/{id}', 'Site\PageController@show');
 });
