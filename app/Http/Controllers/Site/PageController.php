@@ -8,9 +8,14 @@ use App\Facades\PageFacade as Page;
 
 class PageController extends Controller
 {
-    public function index()
+    public function index($format = 'html')
     {
         $pages = Page::take();
+
+        if ( $format == 'json' ) {
+            return response()->json(['data' => $pages], 200);
+        }
+
         return view('page.index', ['pages' => $pages]);
     }
 

@@ -20,6 +20,6 @@ class PageService
 
     public function take()
     {
-        return $this->pages->all();
+        return $this->pages->orderBy('created_at', -1)->get();
     }
 }
