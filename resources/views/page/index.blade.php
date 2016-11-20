@@ -56,9 +56,9 @@
 
 									<tr ng-repeat="page in pages">
 										<td>
-											<button type="submit" class="btn">
-												<i class="glyphicon glyphicon-pencil"></i>
-											</button>
+												<a href="/pages/edit/@{{page.id}}" class="btn btn-default">
+													<i class="glyphicon glyphicon-pencil"></i>
+												</a>
 										</td>
 										<td class="table-text">@{{page.name}}</td>
 										<td class="table-text"><div>@{{page.slug}}</div></td>
