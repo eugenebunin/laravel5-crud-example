@@ -66,7 +66,9 @@ class PageService
 
     protected function generateSlug($name)
     {
-        return $name.'.html';
+        $array = explode(" ", $name);
+        $result = implode("-", $array);
+        return $result.'.html';
     }
 
 }
