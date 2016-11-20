@@ -48,6 +48,12 @@ class PageService
         return $this->pages->orderBy('created_at', -1)->get();
     }
 
+    public function delete($id)
+    {
+        $page = $this->pages->findOrFail($id);
+        return $page->delete();
+    }
+
     protected function generateSlug($name)
     {
         return $name.'.html';

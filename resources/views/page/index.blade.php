@@ -65,7 +65,7 @@
 										<!-- Page Delete Button -->
 										<td>
 											<form method="POST">
-												<button type="submit" class="btn btn-danger">
+												<button ng-click="delete(page.id)" class="btn btn-danger">
 													<i class="glyphicon glyphicon-trash"></i>
 												</button>
 											</form>

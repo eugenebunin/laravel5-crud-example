@@ -30,5 +30,20 @@
                 $scope.init();
             });
         }
+
+        $scope.delete = function(id) {
+            var request = {
+                method: 'POST',
+                url: '/pages/delete/' + id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }
+
+            $http(request).then(function() {
+                $scope.init();
+            });
+        }
+
     }]);
 }());
