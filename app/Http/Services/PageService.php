@@ -18,6 +18,11 @@ class PageService
         $this->pages = $pages;
     }
 
+    public function find($id)
+    {
+        return $this->pages->find($id);
+    }
+
     public function save(array $attrs)
     {
         $validator = Validator::make($attrs, self::$saveRules);
@@ -54,8 +59,14 @@ class PageService
         return $page->delete();
     }
 
+    public function findWithLinksAndPictures($id)
+    {
+        return $this->pages->with('links')->with('pictures')->findOrFail($id);
+    }
+
     protected function generateSlug($name)
     {
         return $name.'.html';
     }
+
 }

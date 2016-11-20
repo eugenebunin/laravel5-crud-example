@@ -26,4 +26,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/pages/delete/{id}', 'Site\PageController@delete');
     Route::get('/pages/{format?}', 'Site\PageController@index');
     Route::get('/pages/edit/{id}', 'Site\PageController@edit');
+    Route::get('/pages/show/{id}', 'Site\PageController@show');
 });

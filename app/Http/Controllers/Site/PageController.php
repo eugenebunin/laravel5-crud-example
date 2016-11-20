@@ -29,7 +29,7 @@ class PageController extends Controller
         catch(\Exception $e) {
             return response()->json(['errors' => [$e->getMessage()], 'success' => false], 400);
         }
-        
+
         return response()->json(['success' => true]);
     }
 
@@ -51,8 +51,28 @@ class PageController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $page = Page::find($id);
+        if ( !$page ) {
+            throw new \Exception("Page not found", 404);
+        }
+        return view('page.edit', ['page' => $page]);
+    }
 
+    public function show($id)
+    {
+        $page = Page::findWithLinksAndPictures($id);
+        if ( !$page ) {
+            throw new \Exception("Page not found", 404);
+        }
+
+        return response()->json([
+            'data' => [
+                'page' => $page,
+                'links' => $page->links,
+                'pictures' => $page->pictures
+            ]
+        ]);
     }
 }
