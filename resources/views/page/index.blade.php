@@ -39,7 +39,7 @@
 
 			<!-- Current Pages -->
 
-				<div class="panel panel-default" ng-init="init()">
+				<div class="panel panel-default" ng-init="index()">
 					<div class="panel-heading">
 						Current Pages
 					</div>

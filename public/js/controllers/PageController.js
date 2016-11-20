@@ -6,8 +6,20 @@
 
         $scope.form = {};
         $scope.pages = [];
+        $scope.links = [];
+        $scope.pictures = [];
 
-        $scope.init = function() {
+        $scope.show = function(id)
+        {
+            $http.get("/pages/show/" + id)
+            .then(function(response) {
+                $scope.page = response.data.data.page;
+                $scope.links = response.data.data.links;
+                $scope.pictures = response.data.data.pictures;
+            });
+        }
+
+        $scope.index = function() {
             $http.get("/pages/json")
             .then(function(response) {
                 $scope.pages = response.data.data;
@@ -27,7 +39,7 @@
             }
 
             $http(request).then(function() {
-                $scope.init();
+                $scope.index();
             });
         }
 
