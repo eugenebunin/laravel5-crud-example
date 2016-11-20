@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container" ng-app="Crud" ng-controller="PageController">
-  <div class="col-sm-offset-2 col-sm-8">
+<div class="container" ng-app="Crud" ng-init="show(<?= $page->id ?>)" ng-controller="PageController">
+  <div class="col-sm-offset-1 col-sm-10">
     <div class="panel panel-default">
       <div class="panel-heading">
         Edit Page
@@ -41,38 +40,65 @@
           </div>
         </form>
 
-          <div class="form-group"
-            <div class="col-sm-6">
-              <button class="btn btn-default">Add Link</button>
-            </div>
-          </div>
-
-          <div class="form-group" ng-repeat="link in links">
-            <div class="panel-heading">
-              Link
-            </div>
-
-            <label for="link-name" class="col-sm-3 control-label">Link name</label>
-
-            <div class="col-sm-6">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-
-          <div class="form-group" ng-repeat="picture in pictures">
-            <div class="panel-heading">
-              Picture
-            </div>
-
-            <label for="picture-source" class="col-sm-3 control-label">Picture source</label>
-
-            <div class="col-sm-6">
-              <input type="text" class="form-control">
-            </div>
-          </div>
-
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-sm-2">
+          <button class="btn btn-default">Add link</button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-default">Add picture</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="link in links">
+      <div class="panel-heading">
+        Link
+      </div>
+
+      <div class="panel-body">
+        <form class="form-horizontal">
+        <div class="form-group">
+          <label for="page-name" class="col-sm-3 control-label">Link name</label>
+
+          <div class="col-sm-6">
+            <input type="text" value="@{{link.name}}" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="page-name" class="col-sm-3 control-label">Link</label>
+
+          <div class="col-sm-6">
+            <input type="text" value="@{{link.link}}" class="form-control">
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="picture in pictures">
+      <div class="panel-heading">
+        Picture
+      </div>
+
+      <div class="panel-body">
+        <form class="form-horizontal">
+        <div class="form-group">
+          <label for="page-name" class="col-sm-3 control-label">Source</label>
+
+          <div class="col-sm-6">
+            <input type="text" value="@{{picture.source}}" class="form-control">
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+
   </div>
 </div>
 
