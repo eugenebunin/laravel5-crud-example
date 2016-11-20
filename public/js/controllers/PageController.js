@@ -53,7 +53,7 @@
             }
 
             $http(request).then(function() {
-                $scope.init();
+                $scope.index();
             });
         }
 
