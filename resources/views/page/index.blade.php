@@ -21,14 +21,14 @@
 							<label for="page-name" class="col-sm-3 control-label">Name</label>
 
 							<div class="col-sm-6">
-								<input type="text" name="name" id="page-name" class="form-control" value="{{ old('page') }}">
+								<input type="text" ng-model="form.page.name" class="form-control">
 							</div>
 						</div>
 
 						<!-- Add Page Button -->
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-6">
-								<button type="submit" class="btn btn-default">
+								<button ng-click="create()" class="btn btn-default">
 									<i class="fa fa-btn fa-plus"></i>Add Page
 								</button>
 							</div>
