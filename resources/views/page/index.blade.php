@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container">
+	<div class="container" ng-app="Crud" ng-controller="PageController">
 		<div class="col-sm-offset-2 col-sm-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -13,7 +13,7 @@
 					@include('common.errors')
 
 					<!-- New Page Form -->
-					<form action="/pages" method="POST" class="form-horizontal">
+					<form method="POST" class="form-horizontal">
 						{{ csrf_field() }}
 
 						<!-- Page Name -->
@@ -38,42 +38,45 @@
 			</div>
 
 			<!-- Current Pages -->
-			@if (count($pages) > 0)
-				<div class="panel panel-default">
+
+				<div class="panel panel-default" ng-init="init()">
 					<div class="panel-heading">
 						Current Pages
 					</div>
 
 					<div class="panel-body">
-						<table class="table table-striped task-table">
+						<table class="table table-striped">
 							<thead>
+								<th>&nbsp;</th>
 								<th>Name</th>
 								<th>Slug</th>
 								<th>&nbsp;</th>
 							</thead>
 							<tbody>
-								@foreach ($pages as $page)
-									<tr>
-										<td class="table-text"><div>{{ $page->name }}</div></td>
-										<td class="table-text"><div>{{ $page->slug }}</div></td>
+
+									<tr ng-repeat="page in pages">
+										<td>
+											<button type="submit" class="btn">
+												<i class="glyphicon glyphicon-pencil"></i>
+											</button>
+										</td>
+										<td class="table-text">@{{page.name}}</td>
+										<td class="table-text"><div>@{{page.slug}}</div></td>
 										<!-- Page Delete Button -->
 										<td>
-											<form action="/pages/{{ $page->id }}" method="POST">
-												{{ csrf_field() }}
-												{{ method_field('DELETE') }}
-
-												<button type="submit" id="delete-page-{{ $page->id }}" class="btn btn-danger">
-													<i class="fa fa-btn fa-trash"></i>Delete
+											<form method="POST">
+												<button type="submit" class="btn btn-danger">
+													<i class="glyphicon glyphicon-trash"></i>
 												</button>
 											</form>
 										</td>
 									</tr>
-								@endforeach
+
 							</tbody>
 						</table>
 					</div>
 				</div>
-			@endif
+
 		</div>
 	</div>
 @endsection

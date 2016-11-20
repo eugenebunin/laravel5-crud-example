@@ -4,19 +4,20 @@
     var app= angular.module('Crud');
     app.controller('PageController', ['$scope', '$http', function($scope, $http) {
 
-        $scope.form.page = {};
+        $scope.form = {};
+        $scope.pages = [];
 
         $scope.init = function() {
-            $http.get("/posts")
+            $http.get("/pages/json")
             .then(function(response) {
-                $scope.pages = response.data;
+                $scope.pages = response.data.data;
             });
         }
 
         $scope.create = function() {
             var request = {
                 method: 'POST',
-                url: '/posts',
+                url: '/pages',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
