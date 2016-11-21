@@ -47,8 +47,7 @@ class PageController extends Controller
         catch(\Exception $e) {
             return response()->json(['errors' => [$e->getMessage()], 'success' => false], 400);
         }
-
-        return response()->json(['success' => true]);
+        return $this->show($result->id);
     }
 
     public function edit($id)

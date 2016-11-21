@@ -8,6 +8,7 @@
         $scope.pages = [];
         $scope.links = [];
         $scope.pictures = [];
+        $scope.page = [];
 
         $scope.show = function(id)
         {
@@ -57,5 +58,22 @@
             });
         }
 
+        $scope.update = function() {
+            var request = {
+                method: 'POST',
+                url: '/pages',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                    id: $scope.page.id,
+                    name: $scope.page.name
+                }
+            }
+
+            $http(request).then(function(response) {
+                $scope.page = response.data.data.page;
+            });
+        }
     }]);
 }());

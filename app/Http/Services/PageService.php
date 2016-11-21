@@ -32,8 +32,9 @@ class PageService
 
         $attrs['slug'] = $this->generateSlug($attrs['name']);
 
-        if ( isset($attrs['id']) && $this->pages->find($attrs['id']) ) {
-            return $this->save($attrs);
+        if ( isset($attrs['id']) && $page = $this->pages->find($attrs['id']) ) {
+            $page->update($attrs);
+            return $page;
         }
         return $this->create($attrs);
     }
