@@ -61,7 +61,7 @@ class PageController extends Controller
 
     public function show($id)
     {
-        $page = Page::findWithLinksAndPictures($id);
+        $page = Page::find($id);
         if ( !$page ) {
             throw new \Exception("Page not found", 404);
         }
@@ -69,8 +69,8 @@ class PageController extends Controller
         return response()->json([
             'data' => [
                 'page' => $page,
-                'links' => $page->links,
-                'pictures' => $page->pictures
+                'links' => Page::links($id),
+                'pictures' => Page::pictures($id)
             ]
         ]);
     }
