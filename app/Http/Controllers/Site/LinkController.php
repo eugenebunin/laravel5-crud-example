@@ -17,8 +17,7 @@ class LinkController extends Controller
       return response()->json([
           'data' => [
               'page' => $page,
-              'links' => Page::links($pageId),
-              'pictures' => Page::pictures($pageId)
+              'links' => Page::links($pageId)
           ]
       ]);
     }
