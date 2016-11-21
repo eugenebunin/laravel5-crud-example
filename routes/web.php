@@ -32,4 +32,8 @@ Route::group(['middleware' => ['web']], function () {
 
     // Links routes
     Route::post('/links', 'Site\LinkController@create');
+
+    // Picture routes
+    Route::post('/pictures', 'Site\PictureController@create');
+
 });

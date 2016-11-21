@@ -100,5 +100,27 @@
 
         }
 
+        $scope.createPicture = function() {
+
+            var request = {
+                method: 'POST',
+                url: '/pictures',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                    page_id: $scope.page.id,
+                    source: $scope.form.picture.source
+                }
+            }
+
+            $http(request).then(function(response) {
+                angular.element('#pictureCreateModal').modal('toggle');
+                $scope.form.picture = [];
+                $scope.pictures = response.data.data.pictures;
+            });
+
+        }
+
     }]);
 }());
