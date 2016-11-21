@@ -93,9 +93,13 @@
             }
 
             $http(request).then(function(response) {
-                angular.element('#linkCreateModal').modal('toggle');
-                $scope.form.link = [];
-                $scope.links = response.data.data.links;
+
+                if ( response.data.success == true ) {
+                    angular.element('#linkCreateModal').modal('toggle');
+                    $scope.form.link = [];
+                    $scope.links = response.data.data.links;
+                }
+
             });
 
         }
