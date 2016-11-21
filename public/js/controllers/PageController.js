@@ -76,5 +76,29 @@
                 $scope.page = response.data.data.page;
             });
         }
+
+        $scope.createLink = function() {
+
+            var request = {
+                method: 'POST',
+                url: '/links',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                data: {
+                    page_id: $scope.page.id,
+                    name: $scope.form.link.name,
+                    link: $scope.form.link.link
+                }
+            }
+
+            $http(request).then(function(response) {
+                angular.element('#linkCreateModal').modal('toggle');
+                $scope.form.link = [];
+                $scope.links = response.data.data.links;
+            });
+
+        }
+
     }]);
 }());

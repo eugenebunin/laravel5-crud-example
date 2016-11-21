@@ -22,9 +22,14 @@ Route::get('/info', function () {
 });
 
 Route::group(['middleware' => ['web']], function () {
+
+    // Pages routes
     Route::post('/pages', 'Site\PageController@save');
     Route::post('/pages/delete/{id}', 'Site\PageController@delete');
     Route::get('/pages/{format?}', 'Site\PageController@index');
     Route::get('/pages/edit/{id}', 'Site\PageController@edit');
     Route::get('/pages/show/{id}', 'Site\PageController@show');
+
+    // Links routes
+    Route::post('/links', 'Site\LinkController@create');
 });

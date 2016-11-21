@@ -65,6 +65,22 @@ class PageService
         return $this->pages->with('links')->with('pictures')->findOrFail($id);
     }
 
+    public function createLink(array $attrs)
+    {
+        $page = $this->pages->findOrFail($attrs['page_id']);
+        return $page->links()->create($attrs);
+    }
+
+    public function links($id)
+    {
+        return $this->pages->findOrFail($id)->links()->orderBy('created_at', -1)->get();
+    }
+
+    public function pictures($id)
+    {
+        return $this->pages->findOrFail($id)->pictures()->orderBy('created_at', -1)->get();
+    }
+
     protected function generateSlug($name)
     {
         $array = explode(" ", $name);
