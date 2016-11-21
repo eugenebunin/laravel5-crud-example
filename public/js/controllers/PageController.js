@@ -40,6 +40,7 @@
             }
 
             $http(request).then(function() {
+                $scope.form.page = [];
                 $scope.index();
             });
         }
