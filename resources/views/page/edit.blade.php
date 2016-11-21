@@ -9,8 +9,6 @@
       </div>
 
       <div class="panel-body">
-        <!-- Display Validation Errors -->
-        @include('common.errors')
 
         <!-- New Page Form -->
         <form method="POST" class="form-horizontal">
