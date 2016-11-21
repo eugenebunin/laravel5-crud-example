@@ -13,6 +13,17 @@ class PageService
         'name' => 'required|min:1|max:256'
     ];
 
+    public static $createLinkRules = [
+        'page_id' => 'required|exists:pages,id',
+        'name' => 'required|min:1',
+        'link' => 'required|url'
+    ];
+
+    public static $createPictureRules = [
+        'page_id' => 'required|exists:pages,id',
+        'source' => 'required|url'
+    ];
+
     public function __construct(\App\Page $pages)
     {
         $this->pages = $pages;
@@ -67,12 +78,22 @@ class PageService
 
     public function createLink(array $attrs)
     {
+        $validator = Validator::make($attrs, self::$createLinkRules);
+        if ($validator->fails()) {
+          return $validator;
+        }
+
         $page = $this->pages->findOrFail($attrs['page_id']);
         return $page->links()->create($attrs);
     }
 
     public function createPicture(array $attrs)
     {
+      $validator = Validator::make($attrs, self::$createPictureRules);
+      if ($validator->fails()) {
+        return $validator;
+      }
+
       $page = $this->pages->findOrFail($attrs['page_id']);
       return $page->pictures()->create($attrs);
     }
