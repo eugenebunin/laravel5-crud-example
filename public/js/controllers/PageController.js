@@ -119,9 +119,13 @@
             }
 
             $http(request).then(function(response) {
-                angular.element('#pictureCreateModal').modal('toggle');
-                $scope.form.picture = [];
-                $scope.pictures = response.data.data.pictures;
+
+                if ( response.data.success == true ) {
+                    angular.element('#pictureCreateModal').modal('toggle');
+                    $scope.form.picture = [];
+                    $scope.pictures = response.data.data.pictures;
+                }
+                
             });
 
         }
