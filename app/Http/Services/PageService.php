@@ -71,6 +71,12 @@ class PageService
         return $page->links()->create($attrs);
     }
 
+    public function createPicture(array $attrs)
+    {
+      $page = $this->pages->findOrFail($attrs['page_id']);
+      return $page->pictures()->create($attrs);
+    }
+
     public function links($id)
     {
         return $this->pages->findOrFail($id)->links()->orderBy('created_at', -1)->get();
