@@ -9,16 +9,19 @@ class PageService
 {
     protected $pages;
 
+    // Rules for saving pages
     public static $saveRules = [
         'name' => 'required|min:1|max:256'
     ];
 
+    // Rules for creating new links
     public static $createLinkRules = [
         'page_id' => 'required|exists:pages,id',
         'name' => 'required|min:1',
         'link' => 'required|url'
     ];
 
+    // Rules for creating new pictures
     public static $createPictureRules = [
         'page_id' => 'required|exists:pages,id',
         'source' => 'required|url'
@@ -76,6 +79,12 @@ class PageService
         return $this->pages->with('links')->with('pictures')->findOrFail($id);
     }
 
+    /**
+   	 * Create link and assign it to page
+   	 *
+   	 * @param arrray
+   	 * @return Validation | \App\Page
+  	*/
     public function createLink(array $attrs)
     {
         $validator = Validator::make($attrs, self::$createLinkRules);
@@ -87,6 +96,12 @@ class PageService
         return $page->links()->create($attrs);
     }
 
+    /**
+   	 * Create picture and assign it to page
+   	 *
+   	 * @param arrray
+   	 * @return Validation | \App\Page
+  	*/
     public function createPicture(array $attrs)
     {
       $validator = Validator::make($attrs, self::$createPictureRules);
@@ -98,16 +113,32 @@ class PageService
       return $page->pictures()->create($attrs);
     }
 
+    /**
+   	 * Get associated links with certain page
+   	 *
+   	 * @param int Page ID
+  	*/
     public function links($id)
     {
         return $this->pages->findOrFail($id)->links()->orderBy('created_at', -1)->get();
     }
 
+    /**
+   	 * Get pictures for certain page
+   	 *
+   	 * @param int Page ID
+  	*/
     public function pictures($id)
     {
         return $this->pages->findOrFail($id)->pictures()->orderBy('created_at', -1)->get();
     }
 
+    /**
+   	 * Generates slug by page name
+   	 *
+   	 * @param string Page name
+     * @return srting Slug name
+  	*/
     protected function generateSlug($name)
     {
         $array = explode(" ", $name);
