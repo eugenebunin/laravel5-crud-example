@@ -1,3 +1,3 @@
-### Installing
+### Installation
 
     php artisan migrate
