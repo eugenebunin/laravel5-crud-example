@@ -10,7 +10,7 @@ class PageService
     protected $pages;
 
     public static $saveRules = [
-        'name' => 'required|min:4|max:256'
+        'name' => 'required|min:1|max:256'
     ];
 
     public function __construct(\App\Page $pages)
