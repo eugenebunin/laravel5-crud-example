@@ -18,7 +18,8 @@ class LinkController extends Controller
           'data' => [
               'page' => $page,
               'links' => Page::links($pageId)
-          ]
+          ],
+          'success' => true
       ]);
     }
 

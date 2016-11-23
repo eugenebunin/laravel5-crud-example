@@ -93,9 +93,13 @@
             }
 
             $http(request).then(function(response) {
-                angular.element('#linkCreateModal').modal('toggle');
-                $scope.form.link = [];
-                $scope.links = response.data.data.links;
+
+                if ( response.data.success == true ) {
+                    angular.element('#linkCreateModal').modal('toggle');
+                    $scope.form.link = [];
+                    $scope.links = response.data.data.links;
+                }
+
             });
 
         }
@@ -115,9 +119,13 @@
             }
 
             $http(request).then(function(response) {
-                angular.element('#pictureCreateModal').modal('toggle');
-                $scope.form.picture = [];
-                $scope.pictures = response.data.data.pictures;
+
+                if ( response.data.success == true ) {
+                    angular.element('#pictureCreateModal').modal('toggle');
+                    $scope.form.picture = [];
+                    $scope.pictures = response.data.data.pictures;
+                }
+                
             });
 
         }

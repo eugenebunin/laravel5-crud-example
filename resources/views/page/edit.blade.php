@@ -9,8 +9,6 @@
       </div>
 
       <div class="panel-body">
-        <!-- Display Validation Errors -->
-        @include('common.errors')
 
         <!-- New Page Form -->
         <form method="POST" class="form-horizontal">
@@ -44,6 +42,7 @@
       </div>
     </div>
 
+    <!-- Panel with create Link&Picture buttons-->
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="col-sm-2">
@@ -55,6 +54,7 @@
       </div>
     </div>
 
+    <!-- List links -->
     <div class="panel panel-default" ng-repeat="link in links">
       <div class="panel-heading">
         Link
@@ -81,6 +81,7 @@
       </div>
     </div>
 
+    <!-- List pictures -->
     <div class="panel panel-default" ng-repeat="picture in pictures">
       <div class="panel-heading">
         Picture

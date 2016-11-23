@@ -18,7 +18,8 @@ class PictureController extends Controller
           'data' => [
               'page' => $page,
               'pictures' => Page::pictures($pageId)
-          ]
+          ],
+          'success' => true
       ]);
     }
 

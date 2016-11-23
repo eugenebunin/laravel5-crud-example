@@ -10,6 +10,12 @@ use Illuminate\Validation\Validator;
 
 class PageController extends Controller
 {
+
+    /**
+     * Renders HTML view or JSON
+     *
+     * @param string Format type: json|html
+    */
     public function index($format = 'html')
     {
         $pages = Page::take();
@@ -59,6 +65,11 @@ class PageController extends Controller
         return view('page.edit', ['page' => $page]);
     }
 
+    /**
+   	 * Renders JSON
+   	 *
+   	 * @param int Page ID
+  	*/
     public function show($id)
     {
         $page = Page::find($id);
