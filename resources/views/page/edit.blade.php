@@ -11,10 +11,13 @@
       <div class="panel-body">
 
         <!-- New Page Form -->
-        <form method="POST" class="form-horizontal">
+        <!-- <form method="POST" class="form-horizontal"> -->
+        {!! BootForm::openHorizontal(['sm' => [3, 6], 'lg' => [3, 6]]) !!}
+
           {{ csrf_field() }}
 
           <!-- Page Name -->
+          <!--
           <div class="form-group">
             <label for="page-name" class="col-sm-3 control-label">Name</label>
 
@@ -22,6 +25,9 @@
               <input type="text" value="@{{page.name}}" ng-model="page.name" class="form-control">
             </div>
           </div>
+          -->
+
+          {!! BootForm::text('Page name', 'name') !!}
 
           <div class="form-group">
             <label for="page-slug" class="col-sm-3 control-label">Slug</label>
@@ -33,11 +39,11 @@
 
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-              <button class="btn btn-default" ng-click="update()">Save</button>
+              <button class="btn btn-default" ng-click="update($event)">Save</button>
             </div>
           </div>
           <input type="hidden" value="@{{page.id}}" ng-model="page.id">
-        </form>
+        {!! BootForm::close() !!}
 
       </div>
     </div>

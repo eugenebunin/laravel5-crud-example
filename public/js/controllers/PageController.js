@@ -59,7 +59,8 @@
             });
         }
 
-        $scope.update = function() {
+        $scope.update = function($event) {
+
             var request = {
                 method: 'POST',
                 url: '/pages',
@@ -75,6 +76,9 @@
             $http(request).then(function(response) {
                 $scope.page = response.data.data.page;
             });
+
+            $event.stopPropagation();
+            $event.preventDefault();
         }
 
         $scope.createLink = function() {
@@ -125,7 +129,7 @@
                     $scope.form.picture = [];
                     $scope.pictures = response.data.data.pictures;
                 }
-                
+
             });
 
         }
