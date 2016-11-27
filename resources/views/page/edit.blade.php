@@ -16,13 +16,8 @@
           <!-- Page Name -->
           {!! BootForm::customText('Page name', 'name')->attribute('ng-model', 'page.name')->attribute('value', '@{{page.name}}') !!}
 
-          <div class="form-group">
-            <label for="page-slug" class="col-sm-3 control-label">Slug</label>
-
-            <div class="col-sm-6">
-              <input type="text" value="@{{page.slug}}" readonly class="form-control">
-            </div>
-          </div>
+          <!-- Page Slug -->
+          {!! BootForm::customText('Page slug', 'slug')->attribute('value', '@{{page.slug}}') !!}
 
           <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
