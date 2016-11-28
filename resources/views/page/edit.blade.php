@@ -14,24 +14,12 @@
         {!! BootForm::openHorizontal(['sm' => [3, 6]]) !!}
 
           <!-- Page Name -->
-          <div class="form-group">
-            <div class="col-sm-6">
-              {!! BootForm::text('Page name', 'name')->attribute('ng-model', 'page.name')->attribute('value', '@{{page.name}}') !!}
-            </div>
-          </div>
+          {!! BootForm::text('Page name', 'name')->attribute('ng-model', 'page.name')->attribute('value', '@{{page.name}}') !!}
 
           <!-- Page Slug -->
-          <div class="form-group">
-            <div class="col-sm-6">
-              {!! BootForm::text('Page slug', 'slug')->attribute('value', '@{{page.slug}}') !!}
-            </div>
-          </div>
+          {!! BootForm::text('Page slug', 'slug')->attribute('value', '@{{page.slug}}') !!}
 
-          <div class="form-group">
-            <div class="col-sm-6">
-              {!! BootForm::submit('Save page')->attribute('ng-click', 'update($event)') !!}
-            </div>
-          </div>
+          {!! BootForm::submit('Save page')->attribute('ng-click', 'update($event)') !!}
 
           <input type="hidden" value="@{{page.id}}" ng-model="page.id">
 
@@ -111,16 +99,11 @@
         </div>
         <div class="modal-body">
 
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="link-name" class="col-sm-3 control-label">Source</label>
+        {!! BootForm::openHorizontal(['sm' => [3, 6]]) !!}
 
-            <div class="col-sm-6">
-              <input type="text" ng-model="form.picture.source" class="form-control">
-            </div>
-          </div>
+        {!! BootForm::text('Picture Source', 'source')->attribute('ng-model', 'form.picture.source') !!}
 
-        </form>
+        {!! BootForm::close() !!}
 
         </div>
         <div class="modal-footer">
@@ -141,24 +124,13 @@
         </div>
         <div class="modal-body">
 
-        <form class="form-horizontal">
-          <div class="form-group">
-            <label for="link-name" class="col-sm-3 control-label">Name</label>
+        {!! BootForm::openHorizontal(['sm' => [3, 6]]) !!}
 
-            <div class="col-sm-6">
-              <input type="text" ng-model="form.link.name" class="form-control">
-            </div>
-          </div>
+        {!! BootForm::text('Link name', 'name')->attribute('ng-model', 'form.link.name') !!}
 
-          <div class="form-group">
-            <label for="link-link" class="col-sm-3 control-label">Link</label>
+        {!! BootForm::text('Link url', 'link')->attribute('ng-model', 'form.link.link') !!}
 
-            <div class="col-sm-6">
-              <input type="text" ng-model="form.link.link" class="form-control">
-            </div>
-          </div>
-
-        </form>
+        {!! BootForm::close() !!}
 
         </div>
         <div class="modal-footer">
