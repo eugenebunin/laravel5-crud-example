@@ -8,4 +8,4 @@
 
     BootForm::customOpen()
 
-    BootForm::customText('Name', 'name', 'John Doe', 'glyphicon glyphicon-globe')
+    BootForm::customText('Name', 'name', 'John Doe', 'glyphicon glyphicon-user')
