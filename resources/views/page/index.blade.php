@@ -9,29 +9,28 @@
 				</div>
 
 				<div class="panel-body">
-					
+
 					<!-- New Page Form -->
-					<form method="POST" class="form-horizontal">
-						{{ csrf_field() }}
+					{!! BootForm::customOpen() !!}
 
 						<!-- Page Name -->
 						<div class="form-group">
-							<label for="page-name" class="col-sm-3 control-label">Name</label>
+							<label for="page-name" class="col-sm-2 control-label">Name</label>
 
 							<div class="col-sm-6">
-								<input type="text" ng-model="form.page.name" class="form-control">
+								{!! BootForm::customText('Page name', 'name')->attribute('ng-model', 'form.page.name')->attribute('placeholder', 'Enter page name') !!}
+								<!--<input type="text" ng-model="form.page.name" class="form-control">-->
 							</div>
 						</div>
 
 						<!-- Add Page Button -->
 						<div class="form-group">
-							<div class="col-sm-offset-3 col-sm-6">
-								<button ng-click="create()" class="btn btn-default">
-									<i class="fa fa-btn fa-plus"></i>Add Page
-								</button>
+							<div class="col-sm-offset- col-sm-6">
+								{!! BootForm::submit('Create new page')->attribute('ng-click', 'create($event)') !!}
 							</div>
 						</div>
-					</form>
+					{!! BootForm::close() !!}
+
 				</div>
 			</div>
 

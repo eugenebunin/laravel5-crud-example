@@ -27,7 +27,7 @@
             });
         }
 
-        $scope.create = function() {
+        $scope.create = function($event) {
             var request = {
                 method: 'POST',
                 url: '/pages',
@@ -43,6 +43,8 @@
                 $scope.form.page = [];
                 $scope.index();
             });
+
+            $event.preventDefault();
         }
 
         $scope.delete = function(id) {

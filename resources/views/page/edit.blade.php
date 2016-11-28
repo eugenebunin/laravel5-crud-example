@@ -10,23 +10,32 @@
 
       <div class="panel-body">
 
-        <!-- New Page Form -->
-        {!! BootForm::customOpen() !!}
+        <!-- Edit Page Form -->
+        {!! BootForm::openHorizontal(['sm' => [3, 6]]) !!}
 
           <!-- Page Name -->
-          {!! BootForm::customText('Page name', 'name')->attribute('ng-model', 'page.name')->attribute('value', '@{{page.name}}') !!}
-
-          <!-- Page Slug -->
-          {!! BootForm::customText('Page slug', 'slug')->attribute('value', '@{{page.slug}}') !!}
-
           <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
-              <button class="btn btn-default" ng-click="update($event)">Save</button>
+            <div class="col-sm-6">
+              {!! BootForm::text('Page name', 'name')->attribute('ng-model', 'page.name')->attribute('value', '@{{page.name}}') !!}
             </div>
           </div>
+
+          <!-- Page Slug -->
+          <div class="form-group">
+            <div class="col-sm-6">
+              {!! BootForm::text('Page slug', 'slug')->attribute('value', '@{{page.slug}}') !!}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-6">
+              {!! BootForm::submit('Save page')->attribute('ng-click', 'update($event)') !!}
+            </div>
+          </div>
+
           <input type="hidden" value="@{{page.id}}" ng-model="page.id">
 
-        {!! BootForm::close() !!}
+          {!! BootForm::close() !!}
 
       </div>
     </div>
