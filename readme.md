@@ -4,7 +4,11 @@
 
     php artisan migrate
 
-### Custom form
+    'providers' => [
+        App\Providers\CustomBootFormsServiceProvider::class,
+      ],
+
+### Using custom form
 
     BootForm::customOpen()
 
