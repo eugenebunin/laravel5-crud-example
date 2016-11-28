@@ -17,18 +17,18 @@ class CustomFormBuilder extends BootFormsBasicFormBuilder
         $this->builder->setToken($app['session.store']->getToken());
     }
 
-    public function customText($label, $name, $value = null, array $attributes = [])
+    public function customText($label, $name, $value = null, $icon = null)
     {
       $control = $this->builder->text($name)->value($value);
-      return $this->formGroup($label, $name, $control);
+      return $this->customFormGroup($label, $name, $control, $icon);
     }
 
-    protected function formGroup($label, $name, $control)
+    protected function customFormGroup($label, $name, $control, $icon = null)
     {
         $label = $this->builder->label($label)->addClass('control-label label')->forId($name);
         $control->id($name)->addClass('form-control');
 
-        $formGroup = new FormGroup($label, $control);
+        $formGroup = new FormGroup($label, $control, $icon);
 
         if ($this->builder->hasError($name)) {
             $formGroup->helpBlock($this->builder->getError($name));
