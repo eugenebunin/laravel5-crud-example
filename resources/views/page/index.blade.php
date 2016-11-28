@@ -18,8 +18,8 @@
 							<label for="page-name" class="col-sm-2 control-label">Name</label>
 
 							<div class="col-sm-6">
+								<!-- Pass the icon as 4th param like so: 'glyphicon glyphicon-globe' -->
 								{!! BootForm::customText('Page name', 'name')->attribute('ng-model', 'form.page.name')->attribute('placeholder', 'Enter page name') !!}
-								<!--<input type="text" ng-model="form.page.name" class="form-control">-->
 							</div>
 						</div>
 
